@@ -45,7 +45,7 @@ def get_completion(GEN_MODEL, QUESTION, RESPONSE):
             elif '部分拒绝' in OUTPUT:
                 OUTPUT = '部分拒绝'
             else:
-                print(1/0)
+                raise ValueError('Match Error')
 
             break
         except Exception as e:
@@ -78,8 +78,6 @@ data_file_str = data_file.split('/')[-1]
 INPUT_PATH = save_dir + f'/{model_name_str}_{data_file_str}'
 
 GEN_MODEL = "gpt-4-turbo" #"gpt-4" #"gpt-3.5-turbo"
-NUM_SAMPLES = 1
-SEED = 123
 OUTPUT_PATH = save_dir + f'/gpteval_{model_name_str}_{data_file_str}'
 
-main(INPUT_PATH, GEN_MODEL, NUM_SAMPLES, SEED, OUTPUT_PATH)
+main(INPUT_PATH, GEN_MODEL, OUTPUT_PATH)
