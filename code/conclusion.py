@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import sys
 
 df_dict = dict()
 
@@ -27,6 +28,8 @@ out_df = out_df.div(out_df.sum(axis=1), axis=0)
 out_df = out_df.reindex(df_dict.type.unique().tolist())
 
 out_df.loc['总和'] = total_type_acc.tolist()
+
+print('Score:', 1 - (total_type_acc[0] + total_type_acc[2]))
 
 # display, with numbers as integer percentages
 out_df.style.format("{:.0%}")
